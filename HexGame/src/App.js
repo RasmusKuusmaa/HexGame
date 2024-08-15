@@ -2,8 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
   return (
-    <div></div>
+    <div>
+      <p>Hello world</p>
+      <button>BUTTON</button>
+    </div>
   );
 }
 

@@ -18,10 +18,16 @@ function generateHex() {
 
 function App() {
   const color = generateHex()
+  const boxStyle = {
+    backgroundColor: color,
+    width: '100px',
+    height: '100px',
+  }
   return (
     <div>
       <Test />
       <h1>{color}</h1>
+      <div style={boxStyle}></div>
     </div>
   );
 }

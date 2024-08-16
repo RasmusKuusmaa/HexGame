@@ -11,13 +11,13 @@ function Test() {
 
 
 function App() {
-  const [color, setColor] = useState('#444444');
+  const [color, setColor] = useState('#4a4444');
   const [chances, setChances] = useState(5);
   const [guesses, setGuesses] = useState([]);
 
   useEffect(() => {
-    setGuesses(['#323099'])
-    setGuesses((prevGuesses) => [...prevGuesses, '#432432'])  
+    setGuesses(['09a099'])
+    setGuesses((prevGuesses) => [...prevGuesses, '432432'])  
   }, [])
 
   return (
@@ -30,24 +30,33 @@ function App() {
       <div className='guessBoxContainer'>
         <h1>Tries left: {chances}</h1>
         {guesses.map((guess, guessIndex) => {
-          const splittedGuess = guess.slice(1).split('');
+          const splittedGuess = guess.split('');
           return (
             <div key={guessIndex} className="guessBox">
-              {splittedGuess.map((char, index) => (
-                <div
-                  key={index}
-                  className='guessBoxChar'
-                  id={color.slice(1)[index] === char ? 'correct' : 'incorrect'}
-                >
-                  {char}
-                </div>
-              ))}
+              {splittedGuess.map((char, index) => {
+                const correctChar = color.slice(1)[index];
+                let direction = '';
+                if (char < correctChar) {
+                  direction = '↑';
+                }
+                else if (char > correctChar) {
+                  direction = '↓';
+                }
+                return (
+                  <div key={index} className='guessBoxChar' id={correctChar === char ? 'correct' : 'incorrect'}>
+                    <div >
+                      {char}
+                    </div>
+                    <div>{direction}</div>
+                  </div>
+                );
+
+              })}
             </div>
           );
         })}
       </div>
    
-      <div className='guessBox'></div>
       
     </div>
   );

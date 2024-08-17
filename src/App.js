@@ -7,8 +7,23 @@ function Test() {
   )
 }
 
+function generateHex(setColor) {
+  const elements = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+  let hex = "#";
+  for (let i = 0; i < 6; i++) {
+    let item = elements[Math.floor(Math.random() * 16)];
+    hex += item;
+  }
+  setColor(hex);
+}
 
-
+function GeneratingButton({ setColor }) {
+  return (
+    <button onClick={() => generateHex(setColor)}>
+      Generate new color
+    </button>
+  );
+}
 
 function App() {
   const [color, setColor] = useState('#4a4444');
@@ -17,7 +32,11 @@ function App() {
 
   useEffect(() => {
     setGuesses(['09a099'])
-    setGuesses((prevGuesses) => [...prevGuesses, '432432'])  
+    setGuesses((prevGuesses) => [...prevGuesses, '432432'])
+  }, [])
+
+  useEffect(() => {
+    generateHex(setColor)
   }, [])
 
   return (
@@ -25,7 +44,7 @@ function App() {
       <Test />
       <h1>{color}</h1>
       <div className='boxStyle' style={{ backgroundColor: color }}></div>
-  
+      <GeneratingButton setColor={setColor} />
       <button onClick={() => setChances(chances - 1)}> Guess</button>
       <div className='guessBoxContainer'>
         <h1>Tries left: {chances}</h1>

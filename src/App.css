@@ -1,38 +1,33 @@
-.App {
-  text-align: center;
+.boxStyle {
+    background-color: #000;
+    width: 100px;
+    height: 100px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.guessBoxContainer {
+    position: fixed;
+    width: 50vw;
+    height: 60vh;
+    border: 3px solid black;
+    left: 25vw;
+    top: 40vh;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.guessBox{
+   border: #000 1px solid ;
+   width: 50vw;
+   height: 10vh; 
+   margin-top: 1px;
+   display: grid;
+   grid-template-columns: repeat(6, 1fr);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.guessBoxChar {
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
 }
-
-.App-link {
-  color: #61dafb;
+#correct {
+    background-color: green;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#incorrect {
+    background-color: red;
 }

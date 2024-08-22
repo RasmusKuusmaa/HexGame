@@ -87,8 +87,10 @@ function App() {
   };
 
   return (
-    <div>
-      <Test />
+    <div className='Container'>
+      {/*
+
+      
       <GeneratingButton setColor={setColor} setGuesses={setGuesses} setChances={setChances} />
       <h1>{color}</h1>
       <div className='boxStyle' style={{ backgroundColor: color }}></div>
@@ -100,6 +102,19 @@ function App() {
           <GuessBox key={guessIndex} guess={guess} color={color} />
         ))}
       </div>
+          */}
+        <div className='GameContainer'>
+          <div className='ColorContainer'></div>
+          <div className='ColorContainer' style={{left: '35vw'}}></div>
+          <button className='RetryButton'> ↻</button>
+          <button className='GuessButton'>→ </button>
+          <div className='AnswerBox'>
+            
+          </div>
+        </div>
+        <div className='GuessContainer'>
+          <h1>4 Guesses Left</h1>
+        </div>
     </div>
   );
 }

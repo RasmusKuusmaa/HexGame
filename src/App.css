@@ -1,3 +1,8 @@
+/* 
+*{
+    background-color: #D2AB99;;
+}
+
 .boxStyle {
     background-color: #000;
     width: 100px;
@@ -30,4 +35,71 @@
 }
 #incorrect {
     background-color: red;
+}*/
+* {
+    background-color: #84543E;;
+}
+.GameContainer {
+    background-color: #D2AB99;
+    position:absolute;
+    left: 20vw;
+    top: 5vh;
+    height: 65vh;
+    width: 60vw;
+    border-radius: 5%;
+}
+.GuessContainer {
+    position: absolute;
+    background-color: #D2AB99;
+    left: 20vw;
+    top: 75vh;
+    height: 60vh;
+    width: 60vw;
+    border-radius: 5%;
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+}
+.ColorContainer {
+    position: absolute;
+    background-color: white;
+    left: 5vw;
+    top: 5vh;
+    height: 20vw;
+    width: 20vw; 
+    border-radius: 10%;
+}
+.RetryButton{
+    position: absolute;
+    left: 7vw;
+    height: 5vw;
+    width: 5vw;
+    top: 50vh;
+    background-color: #C04B4F;
+    font-size: 5rem;
+    border-radius: 10%;
+}
+.GuessButton {
+
+    position: absolute;
+    left: 47vw;
+    height: 5vw;
+    width: 5vw;
+    top: 50vh;
+    background-color: #60992D;
+    font-size: 5rem;
+    border-radius: 10%;
+    
+}
+.AnswerBox{
+    position: absolute;
+    top: 50vh;
+    background-color: white;
+    width: 25vw;
+    height: 5vw;
+    left: 17vw;
+    border-radius: 10px;
+}
+h1 {
+    background-color: #D2AB99;
 }

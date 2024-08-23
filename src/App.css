@@ -104,7 +104,7 @@
     display: grid;
     grid-template-columns: 1fr 4fr;
 }
-.AnswerBox div {
+.AnswerBox div{
     border: 2px solid black;
     display: flex; 
     justify-content: center;
@@ -112,6 +112,17 @@
     font-size: 4vw;
     overflow: hidden; 
     background-color: white;
+}
+.AnswerForm {
+    background-color: white;
+}
+.AnswerForm input {
+    background-color: white;
+    border: none;
+    width: 20vw;
+    height: 10vh;
+    padding-left: 2vw;
+    font-size: 3vw;
 }
 h1 {
     background-color: #D2AB99;

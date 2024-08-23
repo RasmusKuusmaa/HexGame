@@ -35,8 +35,7 @@ function GeneratingButton({ setColor, setGuesses, setChances }) {
 
 function AnswerBox({ guess, setGuess, handleGuessSubmit }) {
   return (
-    <form onSubmit={handleGuessSubmit}>
-      <label>Answer: </label>
+    <form onSubmit={handleGuessSubmit} className='AnswerForm'>
       <input 
         type="text" 
         value={guess} 
@@ -74,6 +73,7 @@ function App() {
   const [chances, setChances] = useState(5);
   const [guesses, setGuesses] = useState([]);
   const [guess, setGuess] = useState('');
+  
 
   useEffect(() => {
     setColor(generateHex());
@@ -107,18 +107,23 @@ function App() {
           */}
         <div className='GameContainer'>
           <div className='ColorContainer' style={{backgroundColor: color}}></div>
-          <div className='ColorContainer' style={{left: '35vw'}}></div>
+          <div className='ColorContainer' style={{ left: '35vw', backgroundColor: `#${guesses[guesses.length - 1]}` }}></div>
           <GeneratingButton setColor={setColor} setGuesses={setGuesses} setChances={setChances}/>
-          <button className='GuessButton'>→ </button>
+          <button className='GuessButton' onClick={handleGuessClick}>→ </button>
           <div className='AnswerBox'>
             <div style={{borderTopLeftRadius: '10px', borderBottomLeftRadius: '10px'}}> #</div>
-            <div style={{borderTopRightRadius: '10px', borderBottomRightRadius: '10px'}}></div>
+           <div>
+              <AnswerBox guess={guess} setGuess={setGuess} handleGuessSubmit={handleGuessClick}/>
+           </div>
             
           </div>
         </div>
         <div className='GuessContainer'>
-          <h1>4 Guesses Left</h1>
+          <h1>Tries left: {chances}</h1>
+          
         </div>
+     
+        
     </div>
   );
 }

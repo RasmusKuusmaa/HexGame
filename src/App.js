@@ -33,17 +33,24 @@ function GeneratingButton({ setColor, setGuesses, setChances }) {
   }
 
 
-function AnswerBox({ guess, setGuess, handleGuessSubmit }) {
-  return (
-    <form onSubmit={handleGuessSubmit} className='AnswerForm'>
-      <input 
-        type="text" 
-        value={guess} 
-        onChange={(e) => setGuess(e.target.value)}
-      />
-    </form>
-  );
-}
+  function AnswerBox({ guess, setGuess, handleGuessSubmit }) {
+    const handleInputChange = (e) => {
+      let val = e.target.value.toUpperCase(); 
+      if (/^[0-9A-F]*$/.test(val) && val.length <= 6) {
+        setGuess(val);
+      }
+    };
+  
+    return (
+      <form onSubmit={handleGuessSubmit} className='AnswerForm'>
+        <input 
+          type="text" 
+          value={guess} 
+          onChange={handleInputChange}
+        />
+      </form>
+    );
+  }
 
 function GuessBox({ guess, color }) {
   const splittedGuess = guess.split('');
@@ -107,7 +114,7 @@ function App() {
           */}
         <div className='GameContainer'>
           <div className='ColorContainer' style={{backgroundColor: color}}></div>
-          <div className='ColorContainer' style={{ left: '35vw', backgroundColor: `#${guesses[guesses.length - 1]}` }}></div>
+          <div className='ColorContainer' style={{ left: '35vw', backgroundColor: `#${guesses[guesses.length - 1]}`}}></div>
           <GeneratingButton setColor={setColor} setGuesses={setGuesses} setChances={setChances}/>
           <button className='GuessButton' onClick={handleGuessClick}>→ </button>
           <div className='AnswerBox'>

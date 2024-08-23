@@ -76,8 +76,9 @@
     width: 5vw;
     top: 50vh;
     background-color: #C04B4F;
-    font-size: 5rem;
+    font-size: 3vw;
     border-radius: 10%;
+    cursor: pointer;
 }
 .GuessButton {
 
@@ -87,9 +88,10 @@
     width: 5vw;
     top: 50vh;
     background-color: #60992D;
-    font-size: 5rem;
+    font-size: 3vw;
     border-radius: 10%;
-    
+    cursor: pointer;
+
 }
 .AnswerBox{
     position: absolute;
@@ -99,6 +101,17 @@
     height: 5vw;
     left: 17vw;
     border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+.AnswerBox div {
+    border: 2px solid black;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    font-size: 4vw;
+    overflow: hidden; 
+    background-color: white;
 }
 h1 {
     background-color: #D2AB99;

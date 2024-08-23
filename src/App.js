@@ -23,14 +23,15 @@ function GeneratingButton({ setColor, setGuesses, setChances }) {
     setColor(newColor);
     setGuesses([]);
     setChances(5);
-  };
-
-  return (
-    <button onClick={handleNewGame}>
-      Start new game
+    };
+    
+    return (
+      <button onClick={handleNewGame} className='RetryButton'>
+        ↻
     </button>
   );
-}
+  }
+
 
 function AnswerBox({ guess, setGuess, handleGuessSubmit }) {
   return (
@@ -86,6 +87,7 @@ function App() {
     setGuess('');
   };
 
+
   return (
     <div className='Container'>
       {/*
@@ -104,11 +106,13 @@ function App() {
       </div>
           */}
         <div className='GameContainer'>
-          <div className='ColorContainer'></div>
+          <div className='ColorContainer' style={{backgroundColor: color}}></div>
           <div className='ColorContainer' style={{left: '35vw'}}></div>
-          <button className='RetryButton'> ↻</button>
+          <GeneratingButton setColor={setColor} setGuesses={setGuesses} setChances={setChances}/>
           <button className='GuessButton'>→ </button>
           <div className='AnswerBox'>
+            <div style={{borderTopLeftRadius: '10px', borderBottomLeftRadius: '10px'}}> #</div>
+            <div style={{borderTopRightRadius: '10px', borderBottomRightRadius: '10px'}}></div>
             
           </div>
         </div>

@@ -87,7 +87,7 @@ function App() {
   }, []);
 
   const handleGuessClick = (e) => {
-    if (guess !== ''){
+    if (guess.length === 6){
 
       e.preventDefault();
       console.log(guess);
@@ -129,23 +129,40 @@ function App() {
           </div>
         </div>
         <div className='GuessContainer'>
-        <h1>Tries left: {chances}</h1>
-        <div className="guessBoxContainer">
-          {guesses.map((gues, guessIndex) => (
-            <div key={guessIndex} className="guessRow">
-              {gues.split('').map((char, charIndex) => (
-                <div
-                  key={charIndex}
-                  className="numberBox"
-                  style={{ backgroundColor: '#fff', color: color }}
-                >
-                  {char}
-                </div>
-              ))}
+  <h1>Tries left: {chances}</h1>
+  <div className="guessBoxContainer">
+    {guesses.map((gues, guessIndex) => (
+      <div key={guessIndex} className="guessRow">
+        {gues.split('').map((char, charIndex) => {
+          const correctChar = color.slice(1)[charIndex];
+          let direction = '';
+          let backgroundColor = '';
+
+          if (char < correctChar) {
+            direction = '↑';
+            backgroundColor = 'red';
+          } else if (char > correctChar) {
+            direction = '↓';
+            backgroundColor = 'red';
+          } else {
+            backgroundColor = 'green'; 
+          }
+
+          return (
+            <div
+              key={charIndex}
+              className="numberBox"
+              style={{ backgroundColor, color: '#fff' }}
+            >
+              <div>{char}</div>
+              <div>{direction}</div>
             </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
+    ))}
+  </div>
+</div>
 
      
         

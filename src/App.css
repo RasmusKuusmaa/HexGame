@@ -1,65 +1,31 @@
-/* 
-*{
-    background-color: #D2AB99;;
+* {
+    background-color: #84543E;
 }
 
-.boxStyle {
-    background-color: #000;
-    width: 100px;
-    height: 100px;
-}
-.guessBoxContainer {
-    position: fixed;
-    width: 50vw;
-    height: 60vh;
-    border: 3px solid black;
-    left: 25vw;
-    top: 40vh;
-}
-.guessBox{
-   border: #000 1px solid ;
-   width: 50vw;
-   height: 10vh; 
-   margin-top: 1px;
-   display: grid;
-   grid-template-columns: repeat(6, 1fr);
-}
-.guessBoxChar {
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    font-size: 2rem;
-}
-#correct {
-    background-color: green;
-}
-#incorrect {
-    background-color: red;
-}*/
-* {
-    background-color: #84543E;;
-}
 .GameContainer {
     background-color: #D2AB99;
-    position:absolute;
+    position: absolute;
     left: 20vw;
     top: 5vh;
     height: 65vh;
     width: 60vw;
     border-radius: 5%;
 }
+
 .GuessContainer {
     position: absolute;
     background-color: #D2AB99;
     left: 20vw;
     top: 75vh;
-    height: 60vh;
+    height: 90vh;
     width: 60vw;
     border-radius: 5%;
-    display: flex;
     justify-content: center;
     font-size: 2rem;
+    display: grid;
+    flex-direction: column;
 }
+
 .ColorContainer {
     position: absolute;
     background-color: white;
@@ -69,7 +35,8 @@
     width: 20vw; 
     border-radius: 10%;
 }
-.RetryButton{
+
+.RetryButton {
     position: absolute;
     left: 7vw;
     height: 5vw;
@@ -80,8 +47,8 @@
     border-radius: 10%;
     cursor: pointer;
 }
-.GuessButton {
 
+.GuessButton {
     position: absolute;
     left: 47vw;
     height: 5vw;
@@ -91,9 +58,9 @@
     font-size: 3vw;
     border-radius: 10%;
     cursor: pointer;
-
 }
-.AnswerBox{
+
+.AnswerBox {
     position: absolute;
     top: 50vh;
     background-color: white;
@@ -104,7 +71,8 @@
     display: grid;
     grid-template-columns: 1fr 4fr;
 }
-.AnswerBox div{
+
+.AnswerBox div {
     border: 2px solid black;
     display: flex; 
     justify-content: center;
@@ -113,9 +81,11 @@
     overflow: hidden; 
     background-color: white;
 }
+
 .AnswerForm {
     background-color: white;
 }
+
 .AnswerForm input {
     background-color: white;
     border: none;
@@ -124,33 +94,48 @@
     padding-left: 2vw;
     font-size: 3vw;
 }
+
 h1 {
     background-color: #D2AB99;
 }
+
 .guessBoxContainer {
+    position: absolute;
+    top: 15vh;
+    left:2.5vw;
     display: flex;
     flex-direction: column;
     gap: 10px;
     background-color: #D2AB99;
-    border: solid black 3px;
-  }
-  
-  .guessRow {
+    width: 55vw;
+}
+
+.guessRow {
     display: flex;
     gap: 5px;
     background-color: #D2AB99;
-  }
-  
-  .numberBox {
-    background-color: white;
-    color: black;
+}
+
+.numberBox {
+    color: white; 
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    border: 1px solid #ccc; 
-  }
-  
+    width: 10vw;
+    height: 10vh;
+    border: 3px solid #ccc; 
+    background-color: inherit; 
+}
+
+.numberBox div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: inherit; 
+    color: inherit; 
+}
+

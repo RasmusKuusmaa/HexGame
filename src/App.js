@@ -8,7 +8,7 @@ function Test() {
 }
 
 function generateHex() {
-  const elements = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+  const elements = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
   let hex = "#";
   for (let i = 0; i < 6; i++) {
     const item = elements[Math.floor(Math.random() * 16)];
@@ -23,6 +23,7 @@ function GeneratingButton({ setColor, setGuesses, setChances }) {
     setColor(newColor);
     setGuesses([]);
     setChances(5);
+    
     };
     
     return (
@@ -91,30 +92,17 @@ function App() {
 
       e.preventDefault();
       console.log(guess);
+      console.log('ans', color)
       setChances(chances - 1);
       setGuesses([...guesses, guess]);
       setGuess('');
+      
     }
   };
 
 
   return (
     <div className='Container'>
-      {/*
-
-      
-      <GeneratingButton setColor={setColor} setGuesses={setGuesses} setChances={setChances} />
-      <h1>{color}</h1>
-      <div className='boxStyle' style={{ backgroundColor: color }}></div>
-      <AnswerBox guess={guess} setGuess={setGuess} handleGuessSubmit={handleGuessClick} />
-      <button onClick={handleGuessClick}>Guess</button>
-      <div className='guessBoxContainer'>
-        <h1>Tries left: {chances}</h1>
-        {guesses.map((guess, guessIndex) => (
-          <GuessBox key={guessIndex} guess={guess} color={color} />
-        ))}
-      </div>
-          */}
         <div className='GameContainer'>
           <div className='ColorContainer' style={{backgroundColor: color}}></div>
           <div className='ColorContainer' style={{ left: '35vw', backgroundColor: `#${guesses[guesses.length - 1]}`}}></div>

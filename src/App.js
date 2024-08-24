@@ -87,11 +87,14 @@ function App() {
   }, []);
 
   const handleGuessClick = (e) => {
-    e.preventDefault();
-    console.log(guess);
-    setChances(chances - 1);
-    setGuesses([...guesses, guess]);
-    setGuess('');
+    if (guess !== ''){
+
+      e.preventDefault();
+      console.log(guess);
+      setChances(chances - 1);
+      setGuesses([...guesses, guess]);
+      setGuess('');
+    }
   };
 
 
@@ -126,9 +129,24 @@ function App() {
           </div>
         </div>
         <div className='GuessContainer'>
-          <h1>Tries left: {chances}</h1>
-          
+        <h1>Tries left: {chances}</h1>
+        <div className="guessBoxContainer">
+          {guesses.map((gues, guessIndex) => (
+            <div key={guessIndex} className="guessRow">
+              {gues.split('').map((char, charIndex) => (
+                <div
+                  key={charIndex}
+                  className="numberBox"
+                  style={{ backgroundColor: '#fff', color: color }}
+                >
+                  {char}
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
+      </div>
+
      
         
     </div>

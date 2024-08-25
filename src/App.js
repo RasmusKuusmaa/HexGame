@@ -91,8 +91,6 @@ function App() {
     if (guess.length === 6){
 
       e.preventDefault();
-      console.log(guess);
-      console.log('ans', color)
       setChances(chances - 1);
       setGuesses([...guesses, guess]);
       setGuess('');
@@ -104,7 +102,9 @@ function App() {
   return (
     <div className='Container'>
         <div className='GameContainer'>
+          <h1 style={{position: 'absolute', left: '10vw', fontSize: '3vw', top: '-3vh'}}>Target</h1>
           <div className='ColorContainer' style={{backgroundColor: color}}></div>
+          <h1 style={{position: 'absolute', left: '40vw', fontSize: '3vw', top: '-3vh'}}>Guess</h1>
           <div className='ColorContainer' style={{ left: '35vw', backgroundColor: `#${guesses[guesses.length - 1]}`}}></div>
           <GeneratingButton setColor={setColor} setGuesses={setGuesses} setChances={setChances}/>
           <button className='GuessButton' onClick={handleGuessClick}>→ </button>

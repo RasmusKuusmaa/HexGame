@@ -7,7 +7,7 @@
     position: absolute;
     left: 20vw;
     top: 5vh;
-    height: 65vh;
+    height: 70vh;
     width: 60vw;
     border-radius: 5%;
 }
@@ -16,7 +16,7 @@
     position: absolute;
     background-color: #D2AB99;
     left: 20vw;
-    top: 75vh;
+    top: 80vh;
     height: 90vh;
     width: 60vw;
     border-radius: 5%;
@@ -30,7 +30,7 @@
     position: absolute;
     background-color: white;
     left: 5vw;
-    top: 5vh;
+    top: 10vh;
     height: 20vw;
     width: 20vw; 
     border-radius: 10%;
@@ -41,7 +41,7 @@
     left: 7vw;
     height: 5vw;
     width: 5vw;
-    top: 50vh;
+    top: 55vh;
     background-color: #C04B4F;
     font-size: 3vw;
     border-radius: 10%;
@@ -53,7 +53,7 @@
     left: 47vw;
     height: 5vw;
     width: 5vw;
-    top: 50vh;
+    top: 55vh;
     background-color: #60992D;
     font-size: 3vw;
     border-radius: 10%;
@@ -62,7 +62,7 @@
 
 .AnswerBox {
     position: absolute;
-    top: 50vh;
+    top: 55vh;
     background-color: white;
     width: 25vw;
     height: 5vw;
@@ -101,7 +101,7 @@ h1 {
 
 .guessBoxContainer {
     position: absolute;
-    top: 15vh;
+    top: 20vh;
     left:2.5vw;
     display: flex;
     flex-direction: column;

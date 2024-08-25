@@ -10,6 +10,7 @@
     height: 70vh;
     width: 60vw;
     border-radius: 5%;
+    overflow: hidden;
 }
 
 .GuessContainer {

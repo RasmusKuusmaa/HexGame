@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-function Test() {
-  return (
-    <h1>HEX code generator</h1>
-  );
-}
+
 
 function generateHex() {
   const elements = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
@@ -53,29 +49,6 @@ function GeneratingButton({ setColor, setGuesses, setChances }) {
     );
   }
 
-function GuessBox({ guess, color }) {
-  const splittedGuess = guess.split('');
-  return (
-    <div className="guessBox">
-      {splittedGuess.map((char, index) => {
-        const correctChar = color.slice(1)[index];
-        let direction = '';
-        if (char < correctChar) {
-          direction = '↑';
-        } else if (char > correctChar) {
-          direction = '↓';
-        }
-        return (
-          <div key={index} className='guessBoxChar' id={correctChar === char ? 'correct' : 'incorrect'}>
-            <div>{char}</div>
-            <div>{direction}</div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
 function App() {
   const [color, setColor] = useState('#4a4444');
   const [chances, setChances] = useState(5);
@@ -88,13 +61,22 @@ function App() {
   }, []);
 
   const handleGuessClick = (e) => {
-    if (guess.length === 6){
-
-      e.preventDefault();
-      setChances(chances - 1);
-      setGuesses([...guesses, guess]);
-      setGuess('');
+    if (chances > 1) {
       
+      if (guess.length === 6){
+        
+        console.log(color)
+        e.preventDefault();
+        setChances(chances - 1);
+        setGuesses([...guesses, guess]);
+        setGuess('');
+        if (guess === color.slice(1)) {
+          alert('Correct, press the retry button to play again')
+        }
+      }
+    }
+    else {
+      alert(`Game failed, the answer was ${color}, press the retry button to play again`)
     }
   };
 
@@ -130,12 +112,12 @@ function App() {
 
           if (char < correctChar) {
             direction = '↑';
-            backgroundColor = 'red';
+            backgroundColor = '#C04B4F';
           } else if (char > correctChar) {
             direction = '↓';
-            backgroundColor = 'red';
+            backgroundColor = '#C04B4F';
           } else {
-            backgroundColor = 'green'; 
+            backgroundColor = '#60992D'; 
           }
 
           return (

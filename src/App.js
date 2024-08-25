@@ -109,10 +109,12 @@ function App() {
           <GeneratingButton setColor={setColor} setGuesses={setGuesses} setChances={setChances}/>
           <button className='GuessButton' onClick={handleGuessClick}>→ </button>
           <div className='AnswerBox'>
-            <div style={{borderTopLeftRadius: '10px', borderBottomLeftRadius: '10px'}}> #</div>
-           <div>
-              <AnswerBox guess={guess} setGuess={setGuess} handleGuessSubmit={handleGuessClick}/>
-           </div>
+          <div style={{borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px'}}>
+            #
+              </div>
+              <div style={{borderTopRightRadius: '20px', borderBottomRightRadius: '20px'}}>
+                  <AnswerBox guess={guess} setGuess={setGuess} handleGuessSubmit={handleGuessClick} cl/>
+              </div>
             
           </div>
         </div>

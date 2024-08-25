@@ -67,7 +67,7 @@
     width: 25vw;
     height: 5vw;
     left: 17vw;
-    border-radius: 10px;
+    border-radius: 50px;
     display: grid;
     grid-template-columns: 1fr 4fr;
 }
@@ -80,10 +80,12 @@
     font-size: 4vw;
     overflow: hidden; 
     background-color: white;
+
 }
 
 .AnswerForm {
     background-color: white;
+    
 }
 
 .AnswerForm input {
@@ -93,6 +95,7 @@
     height: 12vh;
     padding-left: 2vw;
     font-size: 3vw;
+  
 }
 
 h1 {

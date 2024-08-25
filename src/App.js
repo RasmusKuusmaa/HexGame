@@ -1,14 +1,10 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-function Test() {
-  return (
-    <h1>HEX code generator</h1>
-  );
-}
+
 
 function generateHex() {
-  const elements = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+  const elements = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
   let hex = "#";
   for (let i = 0; i < 6; i++) {
     const item = elements[Math.floor(Math.random() * 16)];
@@ -23,83 +19,125 @@ function GeneratingButton({ setColor, setGuesses, setChances }) {
     setColor(newColor);
     setGuesses([]);
     setChances(5);
-  };
-
-  return (
-    <button onClick={handleNewGame}>
-      Start new game
+    
+    };
+    
+    return (
+      <button onClick={handleNewGame} className='RetryButton'>
+        ↻
     </button>
   );
-}
+  }
 
-function AnswerBox({ guess, setGuess, handleGuessSubmit }) {
-  return (
-    <form onSubmit={handleGuessSubmit}>
-      <label>Answer: </label>
-      <input 
-        type="text" 
-        value={guess} 
-        onChange={(e) => setGuess(e.target.value)}
-      />
-    </form>
-  );
-}
 
-function GuessBox({ guess, color }) {
-  const splittedGuess = guess.split('');
-  return (
-    <div className="guessBox">
-      {splittedGuess.map((char, index) => {
-        const correctChar = color.slice(1)[index];
-        let direction = '';
-        if (char < correctChar) {
-          direction = '↑';
-        } else if (char > correctChar) {
-          direction = '↓';
-        }
-        return (
-          <div key={index} className='guessBoxChar' id={correctChar === char ? 'correct' : 'incorrect'}>
-            <div>{char}</div>
-            <div>{direction}</div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
+  function AnswerBox({ guess, setGuess, handleGuessSubmit }) {
+    const handleInputChange = (e) => {
+      let val = e.target.value.toUpperCase(); 
+      if (/^[0-9A-F]*$/.test(val) && val.length <= 6) {
+        setGuess(val);
+      }
+    };
+  
+    return (
+      <form onSubmit={handleGuessSubmit} className='AnswerForm'>
+        <input 
+          type="text" 
+          value={guess} 
+          onChange={handleInputChange}
+        />
+      </form>
+    );
+  }
 
 function App() {
   const [color, setColor] = useState('#4a4444');
   const [chances, setChances] = useState(5);
   const [guesses, setGuesses] = useState([]);
   const [guess, setGuess] = useState('');
+  
 
   useEffect(() => {
     setColor(generateHex());
   }, []);
 
   const handleGuessClick = (e) => {
-    e.preventDefault();
-    console.log(guess);
-    setChances(chances - 1);
-    setGuesses([...guesses, guess]);
-    setGuess('');
+    if (chances > 1) {
+      
+      if (guess.length === 6){
+        
+        console.log(color)
+        e.preventDefault();
+        setChances(chances - 1);
+        setGuesses([...guesses, guess]);
+        setGuess('');
+        if (guess === color.slice(1)) {
+          alert('Correct, press the retry button to play again')
+        }
+      }
+    }
+    else {
+      alert(`Game failed, the answer was ${color}, press the retry button to play again`)
+    }
   };
 
+
   return (
-    <div>
-      <Test />
-      <GeneratingButton setColor={setColor} setGuesses={setGuesses} setChances={setChances} />
-      <h1>{color}</h1>
-      <div className='boxStyle' style={{ backgroundColor: color }}></div>
-      <AnswerBox guess={guess} setGuess={setGuess} handleGuessSubmit={handleGuessClick} />
-      <button onClick={handleGuessClick}>Guess</button>
-      <div className='guessBoxContainer'>
-        <h1>Tries left: {chances}</h1>
-        {guesses.map((guess, guessIndex) => (
-          <GuessBox key={guessIndex} guess={guess} color={color} />
-        ))}
+    <div className='Container'>
+        <div className='GameContainer'>
+          <h1 style={{position: 'absolute', left: '10vw', fontSize: '3vw', top: '-3vh'}}>Target</h1>
+          <div className='ColorContainer' style={{backgroundColor: color}}></div>
+          <h1 style={{position: 'absolute', left: '40vw', fontSize: '3vw', top: '-3vh'}}>Guess</h1>
+          <div className='ColorContainer' style={{ left: '35vw', backgroundColor: `#${guesses[guesses.length - 1]}`}}></div>
+          <GeneratingButton setColor={setColor} setGuesses={setGuesses} setChances={setChances}/>
+          <button className='GuessButton' onClick={handleGuessClick}>→ </button>
+          <div className='AnswerBox'>
+          <div style={{borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px'}}>
+            #
+              </div>
+              <div style={{borderTopRightRadius: '20px', borderBottomRightRadius: '20px'}}>
+                  <AnswerBox guess={guess} setGuess={setGuess} handleGuessSubmit={handleGuessClick} cl/>
+              </div>
+            
+          </div>
+        </div>
+        <div className='GuessContainer'>
+  <h1>Tries left: {chances}</h1>
+  <div className="guessBoxContainer">
+    {guesses.map((gues, guessIndex) => (
+      <div key={guessIndex} className="guessRow">
+        {gues.split('').map((char, charIndex) => {
+          const correctChar = color.slice(1)[charIndex];
+          let direction = '';
+          let backgroundColor = '';
+
+          if (char < correctChar) {
+            direction = '↑';
+            backgroundColor = '#C04B4F';
+          } else if (char > correctChar) {
+            direction = '↓';
+            backgroundColor = '#C04B4F';
+          } else {
+            backgroundColor = '#60992D'; 
+          }
+
+          return (
+            <div
+              key={charIndex}
+              className="numberBox"
+              style={{ backgroundColor, color: '#fff' }}
+            >
+              <div>{char}</div>
+              <div>{direction}</div>
+            </div>
+          );
+        })}
       </div>
+    ))}
+  </div>
+</div>
+
+     
+        
     </div>
   );
 }
